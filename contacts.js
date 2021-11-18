@@ -29,6 +29,9 @@ const removeContact = async contactId => {
 };
 
 const addContact = async (name, email, phone) => {
+  if (name || email || phone === undefined) {
+    return null;
+  }
   const contacts = await listContacts();
   const newContact = { name, email, phone, id: v4() };
   contacts.push(newContact);
